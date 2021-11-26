@@ -9,50 +9,35 @@
   </head>
   <body>
     <div class="calculator-container">
-      <div class="app-bar">
-        <div class="info">
-          <div class="icon">&#9889;</div>
-          <div class="app-title">Calculator</div>
-        </div>
-
-        <div class="controls">
-          <div class="control">&#128469;&#xFE0E;</div>
-          <div class="control">&#128470;&#xFE0E;</div>
-          <div class="control">&#128473;&#xFE0E;</div>
-        </div>
+      <div class="display">
+        <div id="calcHistory" class="number"></div>
+        <div id="currentDisplay" class="number"></div>
       </div>
 
-      <div class="app-logics">
-        <div class="display">
-          <div id="calcHistory" class="number"></div>
-          <div id="currentDisplay" class="number"></div>
-        </div>
+      <div class="calculator-grid">
+        <button class="reset background-accent" onclick="window.calcAPI.reset()">clear</button>
+        <button onclick="window.calcAPI.plusMinus()">±</button>
+        <button onclick="window.calcAPI.removeDigit()">⌫</button>
 
-        <div class="calculator-grid">
-          <button class="reset background-accent" onclick="window.calcAPI.reset()">clear</button>
-          <button onclick="window.calcAPI.plusMinus()">±</button>
-          <button onclick="window.calcAPI.removeDigit()">⌫</button>
+        <button onclick="window.calcAPI.addDigit('7')">7</button>
+        <button onclick="window.calcAPI.addDigit('8')">8</button>
+        <button onclick="window.calcAPI.addDigit('9')">9</button>
+        <button onclick="window.calcAPI.operation('÷')">÷</button>
 
-          <button onclick="window.calcAPI.addDigit('7')">7</button>
-          <button onclick="window.calcAPI.addDigit('8')">8</button>
-          <button onclick="window.calcAPI.addDigit('9')">9</button>
-          <button onclick="window.calcAPI.operation('÷')">÷</button>
+        <button onclick="window.calcAPI.addDigit('4')">4</button>
+        <button onclick="window.calcAPI.addDigit('5')">5</button>
+        <button onclick="window.calcAPI.addDigit('6')">6</button>
+        <button onclick="window.calcAPI.operation('×')">×</button>
 
-          <button onclick="window.calcAPI.addDigit('4')">4</button>
-          <button onclick="window.calcAPI.addDigit('5')">5</button>
-          <button onclick="window.calcAPI.addDigit('6')">6</button>
-          <button onclick="window.calcAPI.operation('×')">×</button>
+        <button onclick="window.calcAPI.addDigit('1')">1</button>
+        <button onclick="window.calcAPI.addDigit('2')">2</button>
+        <button onclick="window.calcAPI.addDigit('3')">3</button>
+        <button onclick="window.calcAPI.operation('-')">-</button>
 
-          <button onclick="window.calcAPI.addDigit('1')">1</button>
-          <button onclick="window.calcAPI.addDigit('2')">2</button>
-          <button onclick="window.calcAPI.addDigit('3')">3</button>
-          <button onclick="window.calcAPI.operation('-')">-</button>
-
-          <button onclick="window.calcAPI.addDigit('0')">0</button>
-          <button onclick="window.calcAPI.addDigit('.')">.</button>
-          <button class="background-accent" onclick="window.calcAPI.calculate()">=</button>
-          <button onclick="window.calcAPI.operation('+')">+</button>
-        </div>
+        <button onclick="window.calcAPI.addDigit('0')">0</button>
+        <button onclick="window.calcAPI.addDigit('.')">.</button>
+        <button class="background-accent" onclick="window.calcAPI.calculate()">=</button>
+        <button onclick="window.calcAPI.operation('+')">+</button>
       </div>
     </div>
   </body>
