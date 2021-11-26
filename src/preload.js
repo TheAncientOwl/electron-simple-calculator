@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
   currentDisplay = document.getElementById('currentDisplay');
 });
 
+// State.
 let currentValue = '';
 let lastValue = '';
 let lastOperation = '';
@@ -19,6 +20,7 @@ const reset = () => {
   currentDisplay.innerHTML = '';
 };
 
+// Number input related functions.
 const addDigit = digit => {
   const positiveCurrentValue = currentValue.startsWith('-') ? currentValue.substring(1) : currentValue;
 
@@ -33,6 +35,22 @@ const addDigit = digit => {
   currentDisplay.innerHTML = currentValue;
 };
 
+const removeDigit = () => {
+  currentValue = currentValue.slice(0, -1);
+
+  if (currentValue === '-') currentValue = '';
+  currentDisplay.innerHTML = currentValue;
+};
+
+const plusMinus = () => {
+  if (currentValue !== '') {
+    if (currentValue.charAt(0) === '-') currentValue = currentValue.substr(1);
+    else currentValue = `-${currentValue}`;
+    currentDisplay.innerHTML = currentValue;
+  }
+};
+
+// Calculus related function.
 const operation = sign => {
   if (currentValue === '' && lastValue === '') return;
 
@@ -48,13 +66,6 @@ const operation = sign => {
   currentValue = '';
   currentDisplay.innerHTML = currentValue;
   calcHistory.innerHTML = `${lastValue} ${lastOperation}`;
-};
-
-const removeDigit = () => {
-  currentValue = currentValue.slice(0, -1);
-
-  if (currentValue === '-') currentValue = '';
-  currentDisplay.innerHTML = currentValue;
 };
 
 const calculate = () => {
@@ -93,14 +104,7 @@ const calculate = () => {
   currentDisplay.innerHTML = currentValue;
 };
 
-const plusMinus = () => {
-  if (currentValue !== '') {
-    if (currentValue.charAt(0) === '-') currentValue = currentValue.substr(1);
-    else currentValue = `-${currentValue}`;
-    currentDisplay.innerHTML = currentValue;
-  }
-};
-
+// Electron expose calc api.
 contextBridge.exposeInMainWorld('calcAPI', {
   reset,
   addDigit,
